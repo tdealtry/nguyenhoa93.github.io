@@ -13,7 +13,7 @@ There are two proposed ways to fix the problem:
 
 ### (1) Redirect temporary directory and disable cache when building image
 
-using `--tmpdir` tag with absolute dir path to redirect temporary to use for `buid` (where there is more space) rather than the default `/tmp`. Additionally, caches also consume space, we can disable it by `--disable-cache`. ([ref](https://sylabs.io/guides/3.4/user-guide/cli/singularity_build.html))
+using `--tmpdir` tag with absolute dir path to redirect temporary to use for `build` (where there is more space) rather than the default `/tmp`. Additionally, caches also consume space, we can disable it by `--disable-cache`. ([ref](https://sylabs.io/guides/3.4/user-guide/cli/singularity_build.html))
 
 ### (2) Increase partition size for vagrant and vagrant-root.
 * Install `vagrant-disksize` plugin
@@ -27,9 +27,9 @@ Vagrant.configure("2") do |config|
   config.vm.box = "sylabs/singularity-3.5-ubuntu-bionic64"
   config.disksize.size='150GB'
 ```
-* `vagrant hault;vagrant up`
+* `vagrant halt;vagrant up`
 
-In case, it doesn't work. We can destroy the box in Virtual Box and re-create the box, then `vagrant up` ([ref](https://stackoverflow.com/a/51064467/11524628))
+In case, it doesn't work. We can destroy the box in Virtual Box (or use `vagrant destroy`) and re-create the box, then `vagrant up` ([ref](https://stackoverflow.com/a/51064467/11524628))
 
 * `vagrant ssh` and then see the disk size with `df -h`:
 ```bash
